@@ -1,0 +1,64 @@
+{% extends 'registers/layout.html' %}
+{% block body %}
+
+<h1 style="color:SaddleBrown;"><u class="spelling-error">Course List:</u></h1>
+
+<h2 style="color:SaddleBrown;"><u class="spelling-error">Semester 1</u></h2>
+
+<table id="customers">
+    <tr>
+        <th style="font-size:125%;"><center> Course Code </center></th>
+        <th style="font-size:125%;"><center> Course Name </center></th>
+        <th style="font-size:125%;"><center> Quantity(remain/limit) </center></th>
+        <th style="font-size:125%;"><center> Status </center></th>     
+    </tr>
+<ul>
+    {% for subject in subjects %}
+    <tr>
+       {% if subject.semester == '1' %}
+       <td>{{ subject.course.subject_id }}</td>
+       <td>{{ subject.course.subject_name }}</td>
+       <td>{{ subject.current_seat }} / {{ subject.seat }}</td>
+       <td style="color:red;" >{{ subject.q_status }}</td>
+       {% endif %}
+    </tr>
+    {% endfor %}
+</ul>
+</table>
+
+<center>
+<h1 style="color:IndianRed;">------------------------------------------</h1>
+</center>
+
+<h2 style="color:SaddleBrown;"><u class="spelling-error">Semester 2</u></h2>
+
+<table id="customers">
+    <tr>
+        <th style="font-size:125%;"><center> Course Code </center></th>
+        <th style="font-size:125%;"><center> Course Name </center></th>
+        <th style="font-size:125%;"><center> Quantity(remain/limit) </center></th>
+        <th style="font-size:125%;"><center> Status </center></th>     
+    </tr>
+<ul>
+    {% for subject in subjects %}
+    <tr>
+       {% if subject.semester == '2' %}
+       <td>{{ subject.course.subject_id }}</td>
+       <td>{{ subject.course.subject_name }}</td>
+       <td>{{ subject.current_seat }} / {{ subject.seat }}</td>
+       <td style="color:red;" >{{ subject.q_status }}</td>
+       {% endif %}
+    </tr>
+    {% endfor %}
+</ul>
+</table>
+<h1></h1>
+<center>
+<a href="{% url 'registers:quota_request' %}">Enroll Semester1</a>
+
+<a href="{% url 'registers:quota_semester2' %}">Enroll Semester2</a>
+</center>
+
+<a href="{% url 'users:index' %}" >Back to Home page</a>
+
+{% endblock %}
