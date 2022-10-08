@@ -11,5 +11,6 @@ jobs :
         pip3 install --user -r cn331assignment2/requirements.txt
         python3 manage.py makemigrations
         python3 manage.py migrate
-        coverage run --source='.' cn331assignment2/manage.py test
+        cd cn331assignment2
+        coverage run --source='.' manage.py test
         coverage report 
