@@ -9,8 +9,8 @@ jobs :
     - name: Run Django unit tests
       run: |
         pip3 install --user -r cn331assignment2/requirements.txt
+        cd cn331assignment2
         python3 manage.py makemigrations
         python3 manage.py migrate
-        cd cn331assignment2
         coverage run --source='.' manage.py test
         coverage report 
